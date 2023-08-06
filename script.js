@@ -5,10 +5,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
         openclose.addEventListener("click", function() {
         if (openclose.getAttribute("data-state") === "closed") {
             openclose.setAttribute("data-state", "open");
-            menuItems.style.left = "0%";
+            openclose.innerHTML = "×";
+            menuItems.style.left = "calc(0% - 5px)";
         } else {
             openclose.setAttribute("data-state", "closed");
-            menuItems.style.left = "-200%";
+            openclose.innerHTML = "≡";
+            menuItems.style.left = "-500%";
         }
     });
 });

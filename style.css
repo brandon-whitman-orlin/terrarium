@@ -1,6 +1,12 @@
 :root {
     --menuColor: #9FAB96;
     --menuBorderColor: #7E8E71;
+    --menuButtonColor: #3b4533;
+    --menuButtonBorderColor: #2c3426;
+    --menuTextColor: #cfdbc5;
+    --submenuColor: #c5c8db;
+    --submenuBorderColor: #1a246b;
+    --submenuTextColor: #020b13;
     --mainFont: 'REM', sans-serif;
 }
 
@@ -29,7 +35,10 @@ body, ol, ul {
     position: relative;
     height: 3.5rem;
     min-width: 3.5rem;
-    background-color: red;
+    background-color: var(--menuButtonColor);
+    border: 5px solid var(--menuButtonBorderColor);
+    color: var(--menuTextColor);
+    box-sizing: border-box;
     margin: 0 1rem 0 1rem;
     display: flex;
     justify-content: center;
@@ -43,10 +52,13 @@ body, ol, ul {
     flex-direction: column;
     width: fit-content;
     padding: 0.5rem;
-    background-color: purple;
-    left: -200%;
-    top: 100%;
+    background-color: var(--submenuColor);
+    border: 5px solid var(--submenuBorderColor);
+    color: var(--submenuTextColor);
+    left: -500%;
+    top: calc(100% + 5px);
     transition: left 0.5s ease-in-out;
+    z-index: 2;
 }
 
 #openclose {
@@ -73,6 +85,9 @@ body, ol, ul {
     margin-block: 0.25rem;
 }
 
-#bottomMenu {
-    display: none;;
+main {
+    position: relative;
+    background-color: red;
+    width: 100%;
+    height: calc(100vh - 10rem);
 }
