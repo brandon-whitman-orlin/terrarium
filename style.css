@@ -91,5 +91,5 @@ main {
     position: relative;
     background-color: rgb(194, 216, 232);
     width: 100%;
-    height: calc(100vh - 10rem);
+    height: calc(100dvh - 10rem);
 }
