@@ -4,9 +4,7 @@
     --menuButtonColor: #3b4533;
     --menuButtonBorderColor: #2c3426;
     --menuTextColor: #cfdbc5;
-    --submenuColor: #c5c8db;
-    --submenuBorderColor: #1a246b;
-    --submenuTextColor: #020b13;
+    --highlightedColor: #ffdd00;
     --mainFont: 'REM', sans-serif;
 }
 
@@ -52,9 +50,9 @@ body, ol, ul {
     flex-direction: column;
     width: fit-content;
     padding: 0.5rem;
-    background-color: var(--submenuColor);
-    border: 5px solid var(--submenuBorderColor);
-    color: var(--submenuTextColor);
+    background-color: var(--menuButtonColor);
+    border: 5px solid var(--menuButtonBorderColor);
+    color: var(--menuTextColor);
     left: -500%;
     top: calc(100% + 5px);
     transition: left 0.5s ease-in-out;
@@ -81,13 +79,17 @@ body, ol, ul {
     cursor: pointer;
 }
 
+.navItem:hover, .itemList li:hover {
+    color: var(--highlightedColor);
+}
+
 .navItem:not(#openclose) {
     margin-block: 0.25rem;
 }
 
 main {
     position: relative;
-    background-color: red;
+    background-color: rgb(194, 216, 232);
     width: 100%;
     height: calc(100vh - 10rem);
 }
