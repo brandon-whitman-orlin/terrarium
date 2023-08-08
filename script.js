@@ -36,11 +36,17 @@ document.addEventListener('DOMContentLoaded', (event) => {
             }, 300);
             setTimeout(() => {
 
+                line2.style.transition = "none";
+                line2.style.width = "70%";
                 line1.style.transform = "translateY(0%)";
                 line3.style.transform = "translateY(0%)";
-                line2.style.width = "70%";
+
 
             }, 600);
+            setTimeout(() => {
+                line2.style.transition = "transform 0.3s ease-in-out, scale 0.3s ease-in-out, width 0.3s ease-in-out";
+
+            }, 700);
             menuItems.style.left = "-500%";
         }
     });
