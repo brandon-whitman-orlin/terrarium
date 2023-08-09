@@ -112,3 +112,46 @@ main {
 	width: 100%;
 	height: calc(100dvh - 10rem);
 }
+
+.meters {
+	height: 3.5rem;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	flex: 20%;
+	list-style: none;
+	margin: 0 1rem 0 1rem;
+	padding: 0.5rem;
+	background-color: var(--menuButtonColor);
+	border: 5px solid var(--menuButtonBorderColor);
+	color: var(--menuTextColor);
+}
+
+.information {
+	height: 3.5rem;
+	flex: 80%;
+	margin: 0 1rem 0 1rem;
+	padding: 0.5rem;
+	background-color: var(--menuButtonColor);
+	border: 5px solid var(--menuButtonBorderColor);
+	color: var(--menuTextColor);
+}
+
+.meter {
+	position: relative;
+	width: 0.5rem;
+	height: 80%;
+	background-color: red;
+	border: 3px solid black;
+	box-sizing: border-box;
+}
+
+.meter::before {
+	content: '';
+	position: absolute;
+	display: block;
+	width: 100%;
+	height: 40%;
+	background-color: lime;
+	bottom: 0;
+}
