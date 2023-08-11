@@ -135,6 +135,9 @@ main {
 	background-color: var(--menuButtonColor);
 	border: 5px solid var(--menuButtonBorderColor);
 	color: var(--menuTextColor);
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
 }
 
 .meter {
