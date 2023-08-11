@@ -53,3 +53,83 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
     });
 });
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    function moveFish() {
+        const fishes = document.querySelectorAll('.fish');
+        const main = document.querySelector('main');
+        
+        const mainWidth = main.clientWidth;
+        const mainHeight = main.clientHeight;
+        
+        fishes.forEach((fish) => {
+          const fishWidth = fish.clientWidth;
+          const fishHeight = fish.clientHeight;
+      
+          const maxX = mainWidth - fishWidth;
+          const maxY = mainHeight - fishHeight;
+          
+          const getRandomPosition = () => ({
+            x: Math.random() * maxX,
+            y: Math.random() * maxY,
+          });
+
+          const getRandomSpeed = () => Math.random() * 2 + 1; // Adjust the range for different speed variations
+        
+          const zIndexValues = [2, 3, 4];
+        
+          const getRandomZIndex = () => zIndexValues[Math.floor(Math.random() * zIndexValues.length)];
+        
+          const changeZIndexWithDelay = () => {
+            fish.style.zIndex = getRandomZIndex();
+            const delay = Math.floor(Math.random() * 10000) + 5000;
+            setTimeout(changeZIndexWithDelay, delay);
+          };
+
+          let newPosition = getRandomPosition();
+          let speedFactor = getRandomSpeed(); // Get a random speed factor
+
+          const moveStep = 1; // You can adjust the base step size for slower/faster movement
+          
+          const move = () => {
+            const currentX = parseFloat(fish.style.left || 0);
+            const currentY = parseFloat(fish.style.top || 0);
+            
+            const diffX = newPosition.x - currentX;
+            const diffY = newPosition.y - currentY;
+            
+            const distance = Math.sqrt(diffX * diffX + diffY * diffY);
+
+            const adjustedMoveStep = moveStep * speedFactor; // Apply speed factor
+            
+            if (distance < adjustedMoveStep) {
+              newPosition = getRandomPosition();
+              speedFactor = getRandomSpeed(); // Change speed factor when reaching a new position
+              requestAnimationFrame(move);
+              return;
+            }
+            
+            const angle = Math.atan2(diffY, diffX);
+            const deltaX = adjustedMoveStep * Math.cos(angle);
+            const deltaY = adjustedMoveStep * Math.sin(angle);
+            
+            const newX = currentX + deltaX;
+            const newY = currentY + deltaY;
+            
+            if (newX >= 0 && newX <= maxX && newY >= 0 && newY <= maxY) {
+              fish.style.left = newX + 'px';
+              fish.style.top = newY + 'px';
+            }
+            
+            requestAnimationFrame(move);
+          };
+          
+          move();
+          changeZIndexWithDelay();
+        });
+      }
+      
+      // Call the function to start moving the fish
+      moveFish();
+      
+});
