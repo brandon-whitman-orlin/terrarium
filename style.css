@@ -201,15 +201,3 @@ main {
 	z-index: 4;
 	border-radius: 40%;
 }
-
-.fish:nth-child(1) {
-	background-color: #eba400;
-}
-
-.fish:nth-child(2) {
-	background-color: #00aceb;
-}
-
-.fish:nth-child(3) {
-	background-color: #d400eb;
-}
