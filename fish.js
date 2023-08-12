@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             return Math.sqrt(diffX * diffX + diffY * diffY);
         };
     
-        const speeds = [3];
+        const speeds = [4];
     
         const getRandomSpeed = () => speeds[Math.floor(Math.random() * speeds.length)];
     
@@ -246,7 +246,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         });
     
         // const speeds = [20];
-        const speeds = [1, 2, 3];
+        const speeds = [1, 2];
     
         const getRandomSpeed = () => speeds[Math.floor(Math.random() * speeds.length)];
     
