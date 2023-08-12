@@ -111,6 +111,7 @@ main {
 	background-color: rgb(194, 216, 232);
 	width: 100%;
 	height: calc(100dvh - 10rem);
+	overflow: hidden;
 }
 
 .meters {
@@ -165,8 +166,6 @@ main {
 	height: 5rem;
 	position: absolute;
 	bottom: 0;
-	transform: rotateX(45deg);
-  	transform-origin: center bottom;
 	z-index: 1;
 }
 
@@ -177,8 +176,7 @@ main {
 	position: absolute;
 	bottom: 1rem;
 	right: 10rem;
-	transform: rotateX(45deg);
-  	transform-origin: center bottom;
+
 	z-index: 3;
 }
 
@@ -189,15 +187,32 @@ main {
 	position: absolute;
 	bottom: 1rem;
 	left: 10rem;
-	transform: rotateX(45deg);
-  	transform-origin: center bottom;
+
 	z-index: 3;
 }
 
 .fish {
 	width: 4rem;
 	height: 3rem;
-	position: absolute;
+	position: fixed;
 	z-index: 4;
 	border-radius: 40%;
+	/* margin-block: 5rem; */
+}
+
+.food {
+	position: relative;
+	width: 100%;
+	height: calc(100dvh - 10rem);
+}
+
+.fishFood {
+	width: 1rem;
+	height: 1rem;
+	position: absolute;
+	inset: 0;
+	z-index: 4;
+	border-radius: 40%;
+	background-color: brown;
+	z-index: 4;
 }
