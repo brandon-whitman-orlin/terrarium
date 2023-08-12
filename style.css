@@ -194,7 +194,7 @@ main {
 .fish {
 	width: 4rem;
 	height: 3rem;
-	position: fixed;
+	position: absolute;
 	z-index: 4;
 	border-radius: 40%;
 	/* margin-block: 5rem; */

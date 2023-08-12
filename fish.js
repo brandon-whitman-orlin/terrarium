@@ -110,15 +110,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
         const fishWidth = fish.clientWidth;
         const fishHeight = fish.clientHeight;
         const maxX = mainWidth - fishWidth;
-        const minY = 80; // Minimum Y value
-        const maxY = 560; // Maximum Y value
+        const maxY = mainHeight - fishHeight;
     
         const getFoodPosition = () => {
             const fishFoods = document.querySelectorAll('.fishFood');
             if (fishFoods.length === 0) {
                 return {
                     x: Math.random() * maxX,
-                    y: Math.random() * (maxY - minY) + minY, // Generate Y between minY and maxY
+                    y: Math.random() * maxY, // Generate Y between minY and maxY
                 };
             }
     
@@ -140,11 +139,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
             const offsetY = (fishHeight - rect.height) / 2;
     
             // Adjust the offsetY to target slightly above the food
-            const adjustedY = Math.min(Math.max(foodY - offsetY, minY), maxY);
+            const adjustedY = Math.min(Math.max(foodY - offsetY, 0), maxY);
     
             return {
-                x: foodX - offsetX,
-                y: adjustedY,
+                x: foodX,
+                y: foodY - 100,
             };
         };
     
@@ -198,15 +197,18 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 if (
                     currentX + fishWidth >= foodRect.left &&
                     currentX <= foodRect.left + foodRect.width &&
-                    currentY + fishHeight + 80 >= foodRect.top &&
-                    currentY <= foodRect.top + foodRect.height
+                    currentY + fishHeight >= foodRect.top - 70 && // Adjusted for the y-offset
+                    currentY <= foodRect.top + foodRect.height - 70 // Adjusted for the y-offset
                 ) {
+                    console.log(`Fish X: ${currentX}, Fish Y: ${currentY}`);
+                    console.log(`Food X: ${foodRect.left}, Food Y: ${foodRect.top}`);
+                                
                     destroyFood(food);
                     fishItem.stopAction = true; // Stop movement when fish overlaps with food
                     return;
                 }
             });
-    
+
             const angle = Math.atan2(diffY, diffX);
             const deltaX = adjustedMoveStep * Math.cos(angle);
             const deltaY = adjustedMoveStep * Math.sin(angle);
@@ -214,7 +216,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             const newX = currentX + deltaX;
             const newY = currentY + deltaY;
     
-            const clampedY = Math.min(Math.max(newY, minY), maxY); // Ensure Y is within the range
+            const clampedY = Math.min(Math.max(newY, 0), maxY); // Ensure Y is within the range
     
             if (newX >= 0 && newX <= maxX) {
                 fish.style.left = newX + 'px';
@@ -236,14 +238,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
         const fishWidth = fish.clientWidth;
         const fishHeight = fish.clientHeight;
         const maxX = mainWidth - fishWidth;
-        const minY = 80; // Minimum Y value
-        const maxY = 560; // Maximum Y value
+        const maxY = mainHeight - fishHeight;
     
         const getRandomPosition = () => ({
             x: Math.random() * maxX,
-            y: Math.random() * (maxY - minY) + minY, // Generate Y between minY and maxY
+            y: Math.random() * maxY,
         });
     
+        // const speeds = [20];
         const speeds = [1, 2, 3];
     
         const getRandomSpeed = () => speeds[Math.floor(Math.random() * speeds.length)];
@@ -280,7 +282,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             const newX = currentX + deltaX;
             const newY = currentY + deltaY;
     
-            const clampedY = Math.min(Math.max(newY, minY), maxY); // Ensure Y is within the range
+            const clampedY = Math.min(Math.max(newY, 0), maxY); // Ensure Y is within the range
     
             if (newX >= 0 && newX <= maxX) {
                 fish.style.left = newX + 'px';
