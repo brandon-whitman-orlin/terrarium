@@ -150,6 +150,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
         function destroyFood(foodItem) {
             console.log("Destroying Food");
             foodItem.remove();
+            fishItem.stopAction = true; // Stop movement when fish overlaps with food
+            fishItem.action = getRandomAction();
+            fishItem.performingAction();
         }
     
         const getDistance = food => {
@@ -204,7 +207,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
                     console.log(`Food X: ${foodRect.left}, Food Y: ${foodRect.top}`);
                                 
                     destroyFood(food);
-                    fishItem.stopAction = true; // Stop movement when fish overlaps with food
                     return;
                 }
             });
